@@ -3,16 +3,32 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Google Playstore Data Visualization</title>
+	<title>Google Play</title>
 
 	<link rel="stylesheet" href="dc.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
 </head>
 <body>
-	<h1>Google Playstore Data Visualization</h1>
+
+<!-- Jumbotron-->	
+<div class="container">
+		<div class="jumbotron">
+				<h1 class="center" class="title">Google Play Store</h1>      
+			<p class="center">Data Visualization Project</p>
+		</div>
+	</div>
+	
+
+	
+
+	<br><br>
 		<div id="Category">
-		<strong>App Category</strong>
+		<strong>Top 10 Categories in Play Store:</strong>
 		<span class="reset" style="display: none;">Selected: <span class="
 		filter"></span></span>
 		<a class="reset" href="
@@ -24,7 +40,7 @@
 	</div>
 	
 	<div id="AppName">
-		<strong>App Name</strong>
+		<strong>Top 10 App in Play Store:</strong>
 		<span class="reset" style="display: none;">Selected: <span class="
 		filter"></span></span>
 		<a class="reset" href="
@@ -32,20 +48,26 @@
 			none;">reset</a>
 					
 			<div class="clearfix"></div>
+			
+			
 	</div>
 
 	<div>
+
 			<div class="dc-data-count">
-				  
+			
 					<span class="filter-count"></span> selected out of <span class="total-count"></span> records | <a
 							href="javascript:dc.filterAll(); dc.renderAll();">Reset All</a>
 			</div>
-	</div>
-	  
-	<!--//<table class="table table-hover dc-data-table">-->
-			<table class="table dc-data-table table-bordered header-fixed" style="border :1px">
-	</table>
 		
+	</div>
+
+
+	<!--//<table class="table table-hover dc-data-table">-->
+
+			<table class="table dc-data-table table-bordered header-fixed" style="width: 55%; height: 30px;">
+			
+	</table>
 
 	
 
@@ -61,8 +83,8 @@
 
 
 
-		 var url = "googleplaystore.csv";
-		 console.log(url);
+		 //var url = "googleplaystore.csv";
+		 //console.log(url);
 	   
 		//  d3.csv(url, function (err, data) {
 			d3.json("http://127.0.0.1:5000/MyData", function (err, data) {
@@ -78,56 +100,65 @@
 
 				 var CategoryDim = ndx.dimension( function (d) { return d["Category"]; });
 				 var AppnameDim = ndx.dimension( function (d) { return d["App_Name"]; });
-				//var AppnameDim = ndx.dimension( function (d) { return d["Installs"]; });
+				 var ApptypeDim = ndx.dimension( function (d) { return d["Type"]; });
+				// var AppnameDim = ndx.dimension( function (d) { return d["Installs"]; });
+				 
+				
 				
 				var CategoryGroup = CategoryDim.group();
-				 var AppnameGroup = AppnameDim.group();
-				// var AppnameGroup = AppnameDim.group(function(d){
-				// 	return +d['Installs'];
-				// });
+				var AppnameGroup = AppnameDim.group();
+				var ApptypeGroup = ApptypeDim.group();
+				var totalinstallsbycat = CategoryDim.group().reduceSum(function(d) { return d.Installs; });
+				var totalinstallsbyapp = AppnameDim.group().reduceSum(function(d) { return d.Installs; });
+				//var AppnameGroup = AppnameDim.top(Infinity);
+				//var AppnameGroup = AppnameDim.group(function(d){return +d['Installs'];});
 
 				CategoryChart
-				  .height(500)
+				  .width(650)
+				  .height(400)
 					.dimension(CategoryDim)
-					.group(CategoryGroup)
+					.group(totalinstallsbycat)
 					.elasticX(true)
 					.data(function (group) {return group.top(10);});
 			
 
 				AppNameChart
-					
-				  .height(500)
+				  .width(850)
+				  .height(400)
 					.dimension(AppnameDim)
-					.group(AppnameGroup)
+					.group(totalinstallsbyapp)
 					.elasticX(true)
+					//.data(function (group) {return group.top(Infinity);});
 					.data(function (group) {return group.top(10);});
 
 				VisCount
 					.dimension(ndx)
 					.group(all);
 
-				// VisTable
-				//   .dimension(AppnameDim)
-				// 	.group(AppnameGroup)
-				// 	.columns([
-				// 		"App_Name",
-				// 	  "Category",
-				// 		"Rating",
-				// 		"Reviews",
-				// 		"Installs",
-				// 		"Type",
-				// 		"Price",
-				// 		"Content_Rating"
-				// 		]);
+				    // VisTable
+			  	  //   .dimension(ApptypeDim)
+				    //   .group(function(d){
+						// 		return d.value;
+						// 	})
+				    //   .columns([
+				    //     "App_Name",
+				   	//     "Category",
+				   	// 	  "Rating",
+				   	// 	  "Reviews",
+				  	// 	  "Installs",
+				  	// 	  "Type",
+				  	// 	  "Price",
+				  	// 	  "Content_Rating"
+				  	// 	   ]);
 
 
 					VisTable
-				  .dimension(AppnameDim)
+				  .dimension(ApptypeDim)
 					.group(function(d){
 						//console.log("d:");
 						//console.log(d);
 
-						return d.App_Name;
+						return d ;
 					})
 					.columns([
 						"App_Name",

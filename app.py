@@ -2,9 +2,6 @@ import os
 import pandas as pd
 import numpy as np
 import sqlalchemy
-import dash
-import dash_core_components as dcc
-import dash_html_components as html
 from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine
@@ -60,7 +57,7 @@ def Mydata():
         }
     
         data_list.append(data)
-    # Thia is to remove the header when is duplicated
+    # This is to remove the header when is duplicated
     data_list.pop(0)
 
     # return jsonify(df.to_dict())

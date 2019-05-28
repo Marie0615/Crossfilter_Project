@@ -5,6 +5,9 @@
 div.dc-chart {
   float: left; }
 
+.center {
+text-align: center;
+  }
 .dc-chart rect.bar {
   stroke: none;
   cursor: pointer; }
@@ -207,3 +210,27 @@ div.dc-chart {
 
 .dc-hard .number-display {
   float: none; }
+
+  .jumbotron {
+    background-image: url('https://www.xda-developers.com/files/2018/01/Google-Play-Store-Feature-Image-Background-Colour.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    height: 200px
+ 
+
+  
+  }
+
+ 
+
+  .title{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    color: #4682b4;
+  }
+
+  .dc-data-table {
+    padding-left: 30px;
+  }
+
