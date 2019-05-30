@@ -1,0 +1,153 @@
+  <!DOCTYPE html>
+  <html>
+  <title>Google Play Store Data Visualization Analysis</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-teal.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <style>
+      body {font-family: "Roboto", sans-serif}
+      .w3-bar-block .w3-bar-item {
+        padding: 16px;
+        font-weight: bold;
+      }
+  </style>
+ 
+  <body>
+   
+  <nav class="w3-sidebar w3-bar-block w3-collapse w3-light-grey w3-animate-left w3-card" style="z-index:3;width:250px;" id="mySidebar">
+  <a class="w3-bar-item w3-button w3-border-bottom w3-large" href="#"><img src="images/android.gif" 
+     style="width:100%;"></a>
+
+    <a class="w3-bar-item w3-button w3-hide-large w3-large" href="javascript:void(0)" onclick="w3_close()">Close <i class="fa fa-remove"></i></a>
+    <a class="w3-bar-item w3-button w3-cyan" href="index.html">Home</a>
+    <a class="w3-bar-item w3-button" href="graph.html">Chart-1</a>
+    <a class="w3-bar-item w3-button" href="graph1.html">Chart-2</a>
+    <a class="w3-bar-item w3-button" href="graph2.html">Chart-3</a>
+    <a class="w3-bar-item w3-button" href="dashboard.html">Dashboard</a>
+    <a class="w3-bar-item w3-button" href="contact.html">Contacts</a>
+    <a class="w3-bar-item w3-button" href="graph3.html">Questions?</a>
+    
+  </nav>
+
+  <div class="w3-overlay w3-hide-large w3-animate-opacity" onclick="w3_close()" style="cursor:pointer" id="myOverlay"></div>
+  <div class="w3-main" style="margin-left:250px;">
+
+  <div id="myTop" class="w3-container w3-top w3-cyan w3-large">
+    <p><i class="fa fa-bars w3-button w3-teal w3-hide-large w3-xlarge" onclick="w3_open()"></i>
+    <span id="myIntro" class="w3-hide w3-cyan">Introduction</span></p>
+  </div>
+
+  <header class="w3-container w3-cyan" style="padding:40px 12px">
+    <h1 class="w3-container w3-xxlarge w3-center">Google Play Store Data Visualization Analysis</h1>
+  </header>
+  <br>
+
+  <div class="w3-container" style="padding:30px">
+     <div class="w3-border">
+      
+       <div class="w3-container w3-margin">        
+            <div class ="w3-row">            
+                <div class="w3-threequarter w3-container">
+                 <h2 style="color:rgb(11, 191, 223)"><b>1-Analyzing the Android Market</b></h2><br>
+                 <h4 ><b>The Basics of Google Play: "Official Android App Store"</b></h4>
+                 <ul class="w3-container w3-bar-item" style="list-style-position: inside">
+                    <li>Release by Google in 2008.</li>
+                    <li>Pre-installed on Android Phones.</li>
+                    <li>Acces to Apps, books, magazines, movies and TV Programs.</li>
+                    <li>Over 2.7 million apps published(2017)</li>
+                  </ul>
+                 </div>
+        
+               <div class="w3-quarter w3-container"> 
+                 <img src="images/appstore.png" style="width:90%" alt="Responsive">
+              </div>              
+             </div>             
+         </div>
+     </div>    
+    <br>
+    <br>
+
+      <div class="w3-border">
+        <div class="w3-container w3-margin ">        
+          <div class ="w3-row">
+              <div class="w3-threequarter w3-container">
+                  <h2 style= "color:rgb(11, 191, 223)"><b>2-Project Overview</b></h2><br>
+                <h4><b>Data Set Sample of~10K Play Store Apps(Kaggle)</b></h4>
+                <h5><b>Tools Used:</b></h5>
+                <ul class="w3-container w3-bar-item" style="list-style-position: inside">
+                    <li><b>Database:</b> SQLITE</li>
+                    <li><b>Data Tools:</b> FLASK AND SQLALCHEMY</li>
+                    <li><b>Front END:</b> HTML, CSS, JAVA SCRIPT</li>
+                    <li><b>JS Libraries:</b> PLOTLY AND CROSSFILTER</li>
+                    <li><b>Deployment:</b> HEROKU</li>
+                  </ul>
+              </div>
+              <br>
+                <div class="w3-quarter w3-container"> 
+                <img src="images/all.png" style="width:80%"  alt="Responsive">
+                </div>
+         </div>
+         </div>
+       </div>
+</div>
+      <br>
+      <hr>
+ 
+
+
+  
+  <div class="w3-container w3-sand w3-leftbar w3-center ">
+  <p><i>“If you can laugh together, you can work together”</i><br>
+   <p>Robert Orben</p>
+  </div>
+
+  <hr>
+
+  <footer class="w3-container w3-cyan w3-center" style="padding:32px">
+    <a href="https://github.com/Marie0615/Project_2" target="_blank" >Github Project Link</a>
+  </footer>
+
+
+  <script>
+  // Open and close the sidebar on medium and small screens
+  function w3_open() {
+    document.getElementById("mySidebar").style.display = "block";
+    document.getElementById("myOverlay").style.display = "block";
+  }
+
+  function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+    document.getElementById("myOverlay").style.display = "none";
+  }
+
+  // Change style of top container on scroll
+  window.onscroll = function() {myFunction()};
+  function myFunction() {
+    if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+      document.getElementById("myTop").classList.add("w3-card-4", "w3-animate-opacity");
+      document.getElementById("myIntro").classList.add("w3-show-inline-block");
+    } else {
+      document.getElementById("myIntro").classList.remove("w3-show-inline-block");
+      document.getElementById("myTop").classList.remove("w3-card-4", "w3-animate-opacity");
+    }
+  }
+
+  // Accordions
+  function myAccordion(id) {
+    var x = document.getElementById(id);
+    if (x.className.indexOf("w3-show") == -1) {
+      x.className += " w3-show";
+      x.previousElementSibling.className += " w3-theme";
+    } else { 
+      x.className = x.className.replace("w3-show", "");
+      x.previousElementSibling.className = 
+      x.previousElementSibling.className.replace(" w3-theme", "");
+    }
+  }
+  </script>
+      
+  </body>
+  </html> 
